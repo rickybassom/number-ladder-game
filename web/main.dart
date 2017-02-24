@@ -5,11 +5,11 @@ import 'dart:async';
 int numSpaces;
 int numRange;
 final int digitHeight = 70;
-final int spaceHeightPx = 40;
+final int spaceHeightPx = 80;
 int ladderHeightPx;
-final double randAnimationWaitTime = 1.5;
-final defNumSpaces = 15;
-final defRanNum = 30;
+const int randAnimationWaitTime = 1000*1;
+final defNumSpaces = 6;
+final defRanNum = defNumSpaces+3;
 
 
 int numRecords=0;
@@ -19,6 +19,8 @@ bool droppedNumber = true;
 bool animation = false;
 
 void main() {
+  print("Number Ladder Game");
+  print("Source Code: https://github.com/rickybas/number-ladder-game");
   setVariables();
   updateButton();
   drawLadder();
@@ -48,29 +50,30 @@ setVariables(){
   InputElement numspacesInput = querySelector("#numspaces");
   InputElement numrangeInput = querySelector("#numrange");
 
+  int min = 2;
+  int max = 30;
+
   int spaces;
   try {
     spaces = int.parse(getQueryVariable("s"));
-    if(spaces>defRanNum){
-      spaces = defRanNum;
-    }else if(spaces<1){
-      spaces = defNumSpaces;
-    }
   } catch(e){
     spaces = defNumSpaces;
   }
-  numSpaces = spaces;
-  numspacesInput.value = numSpaces.toString();
 
   int range;
   try {
     range = int.parse(getQueryVariable("r"));
-    if(range<1){
-      range = spaces + 10;
-    }
   } catch(e){
-    range = spaces + 10;
+    range = defRanNum;
   }
+
+  if(spaces>max || spaces<min) spaces=defNumSpaces;
+  if(spaces>=range) range=spaces+3;
+  if(range<min) range = defRanNum;
+
+  numSpaces = spaces;
+  numspacesInput.value = numSpaces.toString();
+
   numRange = range;
   numrangeInput.value = numRange.toString();
 
@@ -98,6 +101,11 @@ drawNumberGenerator(){
     }
     j++;
   }
+  var numspaces = querySelector("#numspaces");
+  var numrange = querySelector("#numrange");
+
+
+
   var btn = querySelector("#click");
   btn.onClick.listen(genRandNum);
 }
@@ -166,7 +174,7 @@ drop(ev) {
     if(num != null) numAl++;
   }
   if(numAl==numSpaces){
-    window.alert("Won!");
+    window.alert("Won! - score: " + numSpaces.toString());
     window.location.reload();
   }
 
@@ -188,7 +196,7 @@ genRandNum(e){
   int number;
   bool foundNum = false;
   while(!foundNum){
-    number = getRandomInt(1, numRange);
+    number = getRandomInt(0, numRange)+1;
     if(!numLadder.contains(number)) foundNum=true;
   }
 
@@ -204,7 +212,7 @@ genRandNum(e){
   }
 
   animation = true;
-  const time = const Duration(milliseconds:1500);
+  const time = const Duration(milliseconds:(randAnimationWaitTime));
   new Timer(time, () => addNewNumber(number));
   droppedNumber=false;
 
@@ -226,14 +234,10 @@ addNewNumber(int number){
 }
 
 checkAllPositions(int newNum){
-  print("here");
   for(int i=0; i<numSpaces; i++){
     if(numLadder[i] != null) continue;
     if(checkNumbers(newNum, i)){
-      print("space " + i.toString() + " good");
       return;
-    }else{
-      print("space " + i.toString() + " failed");
     }
   }
   window.alert("Lost - score: " + calScore().toString());

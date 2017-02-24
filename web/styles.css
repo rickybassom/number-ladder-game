@@ -12,10 +12,12 @@ html, body {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+    overflow: hidden;
 }
 
 div.container{
-    padding-bottom: 20px;
+    height: 100%;
+    padding-bottom: 80px;
 }
 
 #ladder{
@@ -69,7 +71,7 @@ div.container{
 }
 
 .record{
-    font-size: 5vh;
+    font-size: 50px;
     cursor: -webkit-grab;
     margin-bottom: 32px;
 }
@@ -79,16 +81,16 @@ div.container{
     width: 45px;
     position: relative;
     top: 0;
-    -webkit-transition: top 1.5s cubic-bezier(0, 0.79, 0.7, 1.26);
-    -moz-transition:    top 1.5s cubic-bezier(0, 0.79, 0.7, 1.26);
-    -o-transition:      top 1.5s cubic-bezier(0, 0.79, 0.7, 1.26);
+    -webkit-transition: top 1.0s cubic-bezier(0, 0.79, 0.7, 1.26);
+    -moz-transition:    top 1.0s cubic-bezier(0, 0.79, 0.7, 1.26);
+    -o-transition:      top 1.0s cubic-bezier(0, 0.79, 0.7, 1.26);
 
 }
 
 input[type="number"]{
     margin-left: 32px;
     margin-bottom: 32px;
-    font-size: 3vh;
+    font-size: 30px;
     width: 128px;
 }
 
@@ -107,9 +109,11 @@ button{
 }
 
 #left{
+    text-align: center;
     height: 100%;
     width: 51%;
     float: left;
+    overflow: auto
 }
 
 #rannumgen{
@@ -119,5 +123,12 @@ button{
 
 #right{
     height: 100%;
+    overflow: auto;
     margin-left: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    div.container{
+        padding-bottom: 185px;
+    }
 }
