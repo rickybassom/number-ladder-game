@@ -6,6 +6,8 @@ environment:
 
 dependencies:
   bootstrap: 3.3.7
+  dragula:
+    git: https://github.com/sircco/dragula.dart.git
 
 dev_dependencies:
   browser: '>=0.10.0 <0.11.0'

@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="A Number Ladder Game based on the physical game">
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="maths game, number ladder, maths, classroom" />
+    <meta name="google-site-verification" content="hc-GzTpnnpTE9kUrZ3MOlPiwDknZZxQttwLxm5US23k" />
     <title>Number Ladder Game</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="main.dart" type="application/dart"></script>
@@ -12,6 +16,8 @@
     <!-- include the stylesheets -->
     <link rel="stylesheet" href="packages/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="packages/bootstrap/css/bootstrap-theme.css">
+    <link href='packages/dragula/dragula.css' rel='stylesheet' type='text/css'>
+
 
     <!-- include the javascript -->
     <script src="packages/bootstrap/jquery/jquery.js"></script>
@@ -36,27 +42,31 @@
 
 <div class="container">
     <div id="left">
-        Larger numbers
+        Smaller numbers
         <div class="legs"></div>
         <div id="ladder"></div>
         <div class="legs"></div>
         <div id="space"></div>
-        Smaller numbers
+        Larger numbers
     </div>
 
     <div id="right">
-        <label for="numspaces">Change number of spaces on ladder</label>
+        <label for="maxnumrange">Change max random number</label>
         <br/>
-        <input type="number" id="numspaces" min="2" max="30">
+        <input type="number" id="maxnumrange">
         <br/>
-        <label for="numrange">Change max random number</label>
+        <label for="minnumrange">Change min random number</label>
         <br/>
-        <input type="number" id="numrange" min="5">
+        <input type="number" id="minnumrange">
         <br/>
         <button id="update">Update values</button>
 
         <div id="rannumgen">
-            <div id="digits"></div>
+            <div id="digits">
+                <div id="sign">
+                    <div class="digit" id="negsign">-</div>
+                </div>
+            </div>
 
             <button id="click">Generate random number</button>
 
@@ -65,6 +75,8 @@
     </div>
 
 </div>
+<script src='packages/dragula/dragula.js'></script>
+
 
 </body>
 </html>
