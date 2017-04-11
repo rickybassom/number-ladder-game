@@ -45,8 +45,6 @@ div.container{
 }
 
 .number{
-    font-size: 60px;
-    font-family: sans-serif;
     width: 45px;
     height: 70px;
     overflow: hidden;
@@ -54,26 +52,31 @@ div.container{
 }
 
 #digits{
+    font-family: sans-serif;
+    font-size: 60px;
     height: 100px;
     margin-top: 64px;
+}
+
+#sign{
+    width: 18px;
+    height: 70px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#negsign{
+    top: 70px;
 }
 
 #generatednumbers{
     margin: 16px;
 }
 
-#hoveredbox{
-    background-color: red;
-}
-
-#emptybox{
-    background: none;
-}
-
 .record{
     font-size: 50px;
-    cursor: -webkit-grab;
     margin-bottom: 32px;
+    cursor: -webkit-grab;
 }
 
 .digit{
@@ -113,12 +116,11 @@ button{
     height: 100%;
     width: 51%;
     float: left;
-    overflow: auto
+    overflow: hidden;
 }
 
 #rannumgen{
     float: left;
-    text-align: center;
 }
 
 #right{
@@ -131,4 +133,8 @@ button{
     div.container{
         padding-bottom: 185px;
     }
+}
+
+.gu-transit {
+    color: transparent;
 }
