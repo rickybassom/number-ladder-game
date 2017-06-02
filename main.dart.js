@@ -4451,11 +4451,11 @@ $.T=5
 $.U=-5}}if(J.cp($.T,$.U)){$.T=5
 $.U=-5}y=J.au(J.cr($.T,$.U))
 if(typeof y!=="number")return H.C(y)
-y=C.d.aE(0.75*y)
+y=C.d.aE(0.5*y)
 $.Y=y
 if(y<=2||y>=35){$.T=5
 $.U=-5
-y=C.d.aE(0.75*C.a.b0(10))
+y=C.d.aE(0.5*C.a.b0(10))
 $.Y=y}$.as=new Array(y)
 if(y<=10){y=document.querySelector("#ladder").style
 y.fontSize="25px"}else if(y<=20){y=document.querySelector("#ladder").style
