@@ -95,12 +95,12 @@ setVariables() {
     minRandomNumber = defMinRandomNumber;
   }
 
-  numSpaces = (0.75*(maxRandomNumber - minRandomNumber).abs()).floor();
+  numSpaces = (0.5*(maxRandomNumber - minRandomNumber).abs()).floor();
 
   if (numSpaces <= 2 || numSpaces >= 35) {
     maxRandomNumber = defMaxRandomNumber;
     minRandomNumber = defMinRandomNumber;
-    numSpaces = (0.75*(maxRandomNumber - minRandomNumber).abs()).floor();
+    numSpaces = (0.5*(maxRandomNumber - minRandomNumber).abs()).floor();
   }
 
   numLadder = new List(numSpaces);
